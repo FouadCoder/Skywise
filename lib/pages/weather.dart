@@ -111,7 +111,6 @@ void initState() {
                     style:const TextStyle(color: white , fontSize: 20 , fontWeight: FontWeight.bold),),
                   ),
                 ),
-
                 const SizedBox(height: 50),
                 // to make the text in center 
                 Column(
