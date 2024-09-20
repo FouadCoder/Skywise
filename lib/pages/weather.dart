@@ -76,11 +76,12 @@ void initState() {
     });
     } 
     catch(e){
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
+      if(mounted){
+              ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Unable to retrieve weather data. Please try again later.") ,
           backgroundColor: Colors.red,)
       );
+      }
     }
   }
   // UI FOR SCREEN
@@ -135,8 +136,7 @@ void initState() {
                   fontWeight: FontWeight.bold , fontSize: 39,color: white
                 ),),
                 // Text skystate
-                // ignore: unnecessary_string_interpolations
-                Text("${weather?.skyState ?? ""}" , style:const TextStyle(
+                Text(weather?.skyState ?? "" , style:const TextStyle(
                   fontWeight: FontWeight.w500 , fontSize: 25,color: white
                 ),),
                   ],
