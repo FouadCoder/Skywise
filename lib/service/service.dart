@@ -2,20 +2,19 @@
 import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather_app/key.dart';
 import 'package:weather_app/models/date_weather.dart';
 
 
 class ServiceWeather{
 // API
 static String bascAPI = "http://api.openweathermap.org/data/2.5/weather";
-final String apiKey;
 
-ServiceWeather({required this.apiKey});
 
 
 // get the Weather
 Future<DateWeather> getWeather(double latitude , double longitude) async {
-  final response = await http.get(Uri.parse("$bascAPI?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric"));
+  final response = await http.get(Uri.parse("$bascAPI?lat=$latitude&lon=$longitude&appid=$apiWeatherKey&units=metric"));
   if( response.statusCode == 200){
   return DateWeather.fromJson(jsonDecode(response.body));
   }
